@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>MY Book</title>
+		<link rel="stylesheet" type="text/css" href="../css/mybook.css">
+		<link rel="stylesheet" type="text/css" href="feed.css">
+	</head>
+	<body>
+		<div class="container clearfix">
+			<header class="clearfix">
+				<div class="logo"><a>My Book</a></div>
+				<ul class="loginBar">
+					<li><button onclick="logOut()">Sign Out</button></li>
+				</ul>
+			</header>
+			<div class="clearfix">
+			<nav class="clearfix">
+				<ul>
+					<li class="active"><a href="feed.html">Feed</a></li>
+					<li><a href="../profile/profile.html">Profile</a></li>
+				</ul>
+			</nav>
+			<section>
+				<article class="feedblock">
+					<input type="text" class="postText" id="postText" placeHolder="Text feed or URL feed">
+					<button class="searchBtn" onclick="createFeed()">Post</button>
+					<ul class="feedList" id="feedContainer">
+						<!--
+						<li>
+							<div class="profileImg">
+								<img src="../images/male.png">
+							</div>
+							<div class="feedContent">
+								<p>Text feed</p>
+								<time datetime="2008-02-14 20:00">07/21/2014 3:35 pm</time>
+							</div>
+							<span class="del" onclick="deleteFeed(1)">x</span>
+						</li>
+						<li class="alt">
+							<div class="profileImg">
+								<img src="../images/female.png">
+							</div>
+							<div class="feedContent">
+								<p><a href="http://www.w3schools.com/css/css_howto.asp" target="_blank">http://www.w3schools.com/css/css_howto.asp</a></p>
+								<time datetime="2008-02-14 20:00">07/21/2014 3:35 pm</time>
+							</div>
+						</li>-->
+					</ul>
+				</article>
+			</section>
+			</div>
+			<footer>Talent Improving exercise, OFS</footer>
+		</div>
+	</body>
+	<script src="../js/myBook.js"></script>
+</html>

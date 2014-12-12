@@ -1,0 +1,50 @@
+.profileBlock{
+	min-height:500px;
+}
+.profileBlock form{
+	margin:30px;
+}
+.profileBlock li{
+	margin-bottom:15px;
+	width:442px;
+}
+.profileBlock input[type="text"],
+.profileBlock input[type="number"],
+.profileBlock input[type="file"],
+.profileBlock textarea{
+	border:1px solid #D3C58E;
+	padding:10px;
+	border-radius:6px;
+	width:400px;
+}
+.profileBlock textarea{
+	height:100px;
+}
+.profileBlock input[type="button"]{
+	cursor:pointer;
+}
+.profileBlock input[type="button"]:disabled{
+	background:#D3CEC9;
+	cursor:default;
+}
+.profileBlock .save{
+	background:#5A3511;
+	border:none;
+	border-radius:10px;
+	color:#fff;
+	font-size:16px;
+	padding:10px;
+	float:right;
+	margin-right:20px;
+}
+.imagePreview{
+	background:#fff;
+	border:1px solid #f7f7f7;
+	padding:5px;
+	margin:0 50px 0 0;
+	float:right;
+}
+.imagePreview  img{
+	height:200px;
+	width:200px;
+}

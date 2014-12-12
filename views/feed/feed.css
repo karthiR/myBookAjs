@@ -1,0 +1,69 @@
+.feedblock{
+	border-radius:5px;
+	min-height:500px;
+	margin:30px 10px;
+}
+.feedblock .postText{
+	border:1px solid #D3C58E;
+	padding:10px;
+	border-radius:6px;
+	width:80%;
+}
+.feedblock button{
+	background:#5A3511;
+	border:none;
+	border-radius:10px;
+	color:#fff;
+	font-size:16px;
+	padding:10px;
+	float:right;
+	width:16%;
+}
+.feedList{
+	margin-top:50px;
+}
+.feedList li{
+	background:#F7E99E;
+	border-radius:6px;
+	margin:20px 0;
+	padding:10px;
+	overflow:hidden;
+	position:relative;
+}
+.feedList li.alt{
+	background:#fff;
+}
+.feedList .profileImg{
+	border:1px solid #f7f7f7;
+	background:#fff;
+	height:70px;
+	float:left;
+	padding:5px;
+}
+.feedList .profileImg img{
+	height:70px;
+}
+.feedList .feedContent{
+	font-size:14px;
+	margin-left:100px;
+}
+.feedList .feedContent p{
+	height: 67px;
+	vertical-align: middle;
+	display: table-cell;
+}
+.feedList time{
+	float:right;
+	font-size:12px;
+}
+.feedList .del{
+	color:#f00;
+	cursor:pointer;
+	display:none;
+	position: absolute;
+	right: 10px;
+	top: 0;
+}
+.feedList li:hover .del{
+	display:block;
+}

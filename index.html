@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>MY Book</title>
+		<link rel="stylesheet" type="text/css" href="css/mybook.css">
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.20/angular.min.js"></script>
+		<script src="http://cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.20/angular-route.min.js"></script>
+		<script src="app/config.js"></script>
+		<script src="app/upload.js"></script>
+		<script src="app/controller/mainController.js"></script>
+		<script src="app/controller/feedController.js"></script>
+		<script src="app/controller/profileController.js"></script>
+		<script src="app/services/loginService.js"></script>
+		<script src="app/services/feedService.js"></script>
+		<script src="app/services/profileService.js"></script>		
+		<script src="app/directives/profileDir.js"></script>
+	</head>
+	<body ng-app="myBook">
+		<div class="container" ng-controller="mainCtrl">
+			<header class="clearfix">
+				<div class="logo"><a>My Book</a></div>
+				<ul class="loginBar" ng-show="!logged">
+					<li><input type="text" ng-model="loginCredential.userId" placeHolder="User name" maxLength="8"><sup>*</sup></li>
+					<li><input type="password" ng-model="loginCredential.PassCode" placeHolder="password"><sup>*</sup></li>
+					<li><button ng-click="logIn()">Sign in</button></li>
+					<div class="inValidMsg" ng-bind="loginCredential.inValidMsg"></div>
+				</ul>
+				<ul class="loginBar" ng-show="logged">
+					<li><button ng-click="logOut()">Sign Out</button></li>
+				</ul>
+			</header>
+			<div ng-view class="clearfix"></div>
+			<footer>Talent Improving exercise, OFS</footer>
+		</div>
+		<!-- Home page -->
+		<script type="text/ng-template" id="/home.html">
+		<div class="coverImg"><img src="images/books.jpg"></img></div>
+		</script>
+		<!-- Feed page -->
+		<script type="text/ng-template" id="/feed.html">
+			<div ng-controller="feedCtrl">
+				<nav class="clearfix">
+					<ul>
+						<li class="active"><a href="#/feed">Feed</a></li>
+						<li><a href="#/profile">Profile</a></li>
+					</ul>
+				</nav>
+				<section>
+					<article class="feedblock">
+						<input type="text" class="postText" id="postText" ng-model="postText" placeHolder="Text feed or URL feed">
+						<button class="searchBtn" ng-click="createFeed()">Post</button>
+						<ul class="feedList" id="feedContainer">
+							<li ng-class-even="'alt'" ng-repeat="feed in feeds">
+								<div class="profileImg">
+									<img src="images/male.png">
+								</div>
+								<div class="feedContent">
+									<p ng-if="feed.type=='text'" ng-bind="feed.postData"></p>
+									<p ng-if="feed.type=='url'"><a href="{{feed.postData}}" target="_blank" ng-bind="feed.postData">http://www.w3schools.com/css/css_howto.asp</a></p>
+									<time datetime="2008-02-14 20:00" ng-bind="feed.date | dateFilter"></time>
+								</div>
+								<span class="del" ng-click="deleteFeed(feed.id)">x</span>
+							</li>
+						</ul>
+					</article>
+				</section>
+			</div>	
+		</script>
+		<!-- profile page -->
+		<script type="text/ng-template" id="/profile.html">
+		<div ng-controller="profileCtrl">
+			<nav>
+				<ul>
+					<li><a href="#/feed">Feed</a></li>
+					<li class="active"><a href="#/profile">Profile</a></li>
+				</ul>
+			</nav>
+			<section>
+				<div class="profileBlock">
+					<div class="imagePreview">
+						<img src="{{profile.img}}" id="profileImage">
+					</div>
+					<form name="myForm" novalidate>
+						<ul>
+							<li>
+								<input type="text" ng-model="profile.name" placeHolder="Name" maxLength="50" required><sup>*</sup>
+							</li>
+							<li>
+								<input type="text" ng-model="profile.age" placeHolder="Age" maxLength="4" ng-change="checkAge()" only-num required><sup>*</sup>
+							</li>
+							<li>						
+								<input type="text" ng-model="profile.phone" placeHolder="phone" only-num required><sup>*</sup>
+							</li>
+							<li>						
+								<input type="text" ng-model="profile.email" placeHolder="Email" validate-email required><sup>*</sup>
+							</li>
+							<li>						
+								<textarea ng-model="profile.address" placeHolder="Address"></textarea>
+							</li>
+							<li>
+								<input type="file" ng-file-select="onFileSelect($files)" >
+							</li>
+							<li>						
+								<input type="button" ng-click="saveProfile()" id="saveProfile" value="Save" class="save" ng-disabled="myForm.$invalid || inValidAge || inValidEmail">
+							</li>
+						</ul>
+					</form>
+				</div>
+			</section>
+		</div>	
+		</script>
+	</body>
+</html>
